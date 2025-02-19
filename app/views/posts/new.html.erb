@@ -1,0 +1,37 @@
+<% content_for :title do %>
+  New post - Members Only!
+<% end %>
+
+<% content_for :flash_messages do %>
+  <% flash.each do |name, msg| %>
+    <div class="toast <%= name %>">
+      <%= msg %>
+    </div>
+  <% end %>
+<% end %>
+
+<main>
+  <h1>New post</h1>
+
+  <div class="form-wrapper">
+    <%= form_with model: @post do |f| %>
+      <div>
+        <%= f.label :title do |text| %>
+          <%= text %>
+          <%= f.text_field :title %>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.label :body do |text| %>
+          Content
+          <%= f.text_area :body, size: "30x5" %>
+        <% end %>
+      </div>
+
+      <div>
+        <%= f.button "Create" %>
+      </div>
+    <% end %>
+  </div>
+</main>
