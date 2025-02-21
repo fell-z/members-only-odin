@@ -19,7 +19,7 @@ class PostsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:error] = "Oops... Something bad happened somewhere."
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
