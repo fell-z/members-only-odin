@@ -1,0 +1,85 @@
+@import url("colors.css");
+
+main {
+  padding: 8px 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.form {
+  & label,
+  & input,
+  & textarea {
+    display: block;
+    width: 100%;
+
+    font: inherit;
+    font-size: 14px;
+    color: hsl(from var(--secondary-color) h s calc(l - 15));
+  }
+
+  & label input[type="checkbox"] {
+    display: inline-block;
+    width: fit-content;
+    margin-left: auto;
+  }
+
+  & label {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  & input[type="text"],
+  & input[type="email"],
+  & input[type="tel"],
+  & input[type="password"],
+  & textarea {
+    padding: 4px 8px; 
+
+    border: 2px solid hsl(0, 0%, 76%);
+    border-radius: 4px;
+
+    &:user-invalid {
+      border-color: hsl(from red h calc(s - 10) calc(l + 20));
+    }
+
+    &:user-valid {
+      border-color: hsl(from green h calc(s - 10) calc(l + 20));
+    }
+
+    &:focus {
+      outline: 0;
+      border-color: hsl(from blue calc(h - 30) calc(s - 15) calc(l + 10));
+    }
+  }
+
+  & button {
+    color: var(--primary-color);
+    font-weight: 500;
+
+    padding: 4px 12px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 2px var(--box-shadow-color);
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: hsl(from var(--primary-color) h s calc(l + 10));
+      background-color: hsl(from var(--secondary-color) h s calc(l + 10));
+    }
+
+    &:active {
+      color: hsl(from var(--primary-color) h s calc(l - 5));
+      background-color: hsl(from var(--secondary-color) h s calc(l - 5));
+    }
+  }
+}

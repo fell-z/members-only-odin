@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "Members Only!" %></title>
+  <head> <title><%= content_for(:title) || "Members Only!" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -18,17 +17,29 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%#= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", data: { turbo_track: "reload" } %>
+    <%= stylesheet_link_tag "toasts", data: { turbo_track: "reload" } %>
+    <%= javascript_include_tag "toasts", data: { turbo_track: "reload" }, defer: true %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <% if flash.any? %>
-      <div class="toasts-wrapper">
-        <%= content_for :flash_messages %>
-      </div>
-    <% end %>
+    <%= render "header" %>
+
+    <div class="toasts-wrapper">
+      <% flash.each do |name, msg| %>
+        <div class="toast <%= name %>">
+          <%= msg %>
+          <button type="button" class="close-toast">&times;</button>
+        </div>
+      <% end %>
+
+      <%= content_for :toast_messages %>
+    </div>
 
     <%= yield %>
+
+    <%= render "footer" %>
   </body>
 </html>

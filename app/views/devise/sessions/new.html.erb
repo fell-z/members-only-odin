@@ -1,0 +1,50 @@
+<% content_for :title do %>
+  Log in - Members Only!
+<% end %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "devise", data: { turbo_track: "reload" } %>
+<% end %>
+
+<% content_for :header_nav do %>
+  <nav>
+    <ul>
+      <li><%= link_to "Back", root_path %></li>
+    </ul>
+  </nav>
+<% end %>
+
+<main>
+  <h2>Log in</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form user-form" }) do |f| %>
+    <div class="field">
+      <%= f.label :email do |label| %>
+        <%= label %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password do |label| %>
+        <%= label %>
+        <%= f.password_field :password, autocomplete: "current-password", required: true %>
+      <% end %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.label :remember_me do |label| %>
+          <%= label %>
+          <%= f.check_box :remember_me %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.button "Log in" %>
+    </div>
+
+    <%= render "devise/shared/links" %>
+  <% end %>
+</main>

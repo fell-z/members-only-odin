@@ -1,0 +1,28 @@
+@import url("shared/form.css");
+
+.new-post-form {
+  width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  & label {
+    text-align: center;
+  }
+
+  & input[type="text"] {
+    width: 22ch;
+  }
+
+  & textarea {
+    resize: horizontal;
+    min-width: 324px;
+  }
+
+  & div:has(button) {
+    margin-top: 12px;
+    margin-bottom: 8px;
+  }
+}

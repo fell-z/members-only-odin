@@ -1,0 +1,80 @@
+@import url("shared/colors.css");
+
+.toasts-wrapper {
+  --notice-color: var(--success-color);
+  --success-color: hsl(from green h calc(s - 10) calc(l + 20));
+  --error-color: hsl(from red h calc(s - 10) calc(l + 20));
+  --alert-color: var(--error-color);
+  --close-button-color: hsl(from red h calc(s - 10) calc(l + 15));
+
+  width: 300px;
+
+  position: absolute;
+  top: 15%;
+  left: 76%;
+  z-index: 1;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.toast {
+  font-size: 14px;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  box-shadow: 1px 2px 0 var(--box-shadow-color);
+  
+  border-radius: 8px;
+  border: 1px solid grey;
+  
+  padding: 6px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  &.notice {
+    border-color: var(--notice-color);
+  }
+
+  &.success {
+    border-color: var(--success-color);
+  }
+
+  &.error {
+    border-color: var(--error-color);
+  }
+
+  &.alert {
+    border-color: var(--alert-color); 
+  }
+
+  & .close-toast {
+    width: 20px;
+    height: 20px;
+    
+    font-size: 24px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: var(--close-button-color);
+    background: none;
+    
+    border: none;
+    
+    cursor: pointer;
+    
+    text-shadow: var(--close-button-color) 0 0 0;
+    
+    transition-duration: 0.08s;
+
+    &:hover {
+      color: hsl(from var(--close-button-color) h s calc(l - 15));
+      text-shadow: var(--close-button-color) 0 0 4px;
+    }
+  }
+}

@@ -1,20 +1,31 @@
-<h1>Posts</h1>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "posts", data: { turbo_track: "reload" } %>
+<% end %>
 
-<main>
-  <div class="posts-wrapper">
-    <%= render @posts %>
-  </div>
-
-  <div class="user-actions">
+<% content_for :header_nav do %>
+  <nav>
     <ul>
       <% if user_signed_in? %>
-        <li><%= link_to "New post", new_post_path %></li>
         <li><%= link_to "Edit account", edit_user_registration_path %></li>
         <li><%= button_to "Sign out", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Sign in", new_user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_session_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
       <% end %>
     </ul>
+  </nav>
+<% end %>
+
+<main>
+  <h2>Posts</h2>
+
+  <div class="posts-wrapper">
+    <%= render @posts %>
   </div>
+
+  <% if user_signed_in? %>
+    <%= link_to new_post_path, class: "new-post-link", title: "New post" do %>
+      <%= image_tag "plus.svg", size: "16" %>
+    <% end %>
+  <% end %>
 </main>

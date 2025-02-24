@@ -1,0 +1,7 @@
+:root {
+  --primary-color: hsl(20deg, 29%, 89%);
+  --secondary-color: hsl(18deg, 18%, 28%);
+  --tertiary-color: hsl(20deg, 37%, 68%);
+  --border-color: hsl(117deg, 33%, 86%);
+  --box-shadow-color: hsl(from var(--secondary-color) h s calc(l + 15));
+}
